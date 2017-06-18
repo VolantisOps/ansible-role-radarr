@@ -1,0 +1,10 @@
+---
+radarr_port: 7878
+radarr_bind_address: '*'
+radarr_ssl_port: 9898
+radarr_enable_ssl: false
+radarr_authentication_method: Forms
+radarr_password_set: false # Set to true after you configure radarr
+radarr_manage_ufw: false
+radarr_additional_groups: '' # Comma-separated list of group names
+radarr_build_user: pacaur-builder

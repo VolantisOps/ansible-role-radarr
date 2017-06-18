@@ -1,0 +1,36 @@
+---
+- name: Allow radarr web port
+  ufw:
+    rule: allow
+    port: "{{ radarr_port }}"
+    proto: tcp
+  when: radarr_manage_ufw
+
+- name: Allow radarr SSL web port
+  ufw:
+    rule: allow
+    port: "{{ radarr_ssl_port }}"
+    proto: tcp
+  when: radarr_enable_ssl and radarr_manage_ufw
+
+- name: Install radarr from aur
+  aur: name=radarr
+  become: yes
+  become_user: "{{ radarr_build_user }}"
+  notify: restart radarr
+
+- name: Add radarr user to additional groups
+  user: "name=radarr groups={{ radarr_additional_groups }} append=yes"
+  when: "radarr_additional_groups != ''"
+
+- name: Install radarr config file
+  template:
+    src: config.xml.j2
+    dest: /var/lib/radarr/config.xml
+    owner: radarr
+    group: radarr
+    mode: 0644
+  notify: restart radarr
+
+- name: Ensure radarr is running
+  service: "name=radarr state=started enabled=yes"
