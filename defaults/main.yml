@@ -1,7 +1,8 @@
 ---
-radarr_port: 7878
+radarr_api_key: ''
 radarr_bind_address: '*'
-radarr_ssl_port: 9898
+radarr_port: 7878
+radarr_ssl_port: 8787
 radarr_enable_ssl: false
 radarr_authentication_method: Forms
 radarr_password_set: false # Set to true after you configure radarr

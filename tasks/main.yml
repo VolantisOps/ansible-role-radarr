@@ -23,6 +23,13 @@
   user: "name=radarr groups={{ radarr_additional_groups }} append=yes"
   when: "radarr_additional_groups != ''"
 
+- name: Ensure radarr data directory exists
+  file: 
+    path: /var/lib/radarr
+    state: directory
+    owner: radarr
+    group: radarr
+
 - name: Install radarr config file
   template:
     src: config.xml.j2

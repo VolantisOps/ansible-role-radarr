@@ -6,7 +6,7 @@
   <SslPort>{{ radarr_ssl_port }}</SslPort>
   <EnableSsl>{% if radarr_enable_ssl %}True{% else %}False{% endif %}</EnableSsl>
   <ApiKey>{{ radarr_api_key }}</ApiKey>
-  <AuthenticationMethod>{{ radarr_authentication_method }}</AuthenticationMethod>
+  <AuthenticationMethod>{% if radarr_password_set %}{{ radarr_authentication_method }}{% else %}None{% endif %}</AuthenticationMethod>
   <Branch>develop</Branch>
   <LaunchBrowser>False</LaunchBrowser>
   <SslCertHash></SslCertHash>
