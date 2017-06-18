@@ -5,7 +5,7 @@
   <BindAddress>{{ radarr_bind_address }}</BindAddress>
   <SslPort>{{ radarr_ssl_port }}</SslPort>
   <EnableSsl>{% if radarr_enable_ssl %}True{% else %}False{% endif %}</EnableSsl>
-  <ApiKey>1eb269d712414567bdb058f6e2765ad3</ApiKey>
+  <ApiKey>{{ radarr_api_key }}</ApiKey>
   <AuthenticationMethod>{{ radarr_authentication_method }}</AuthenticationMethod>
   <Branch>develop</Branch>
   <LaunchBrowser>False</LaunchBrowser>
